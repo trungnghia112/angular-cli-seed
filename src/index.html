@@ -12,16 +12,28 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
-  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
   <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#ffffff">
 
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@trungnghia112">
+  <meta name="twitter:title" content="Angular CLI Seed">
+  <meta name="twitter:description" content="PWA ready starter project for Angular Service Worker">
+  <meta name="twitter:creator" content="@trungnghia112">
+  <meta name="twitter:image" content="/assets/favicons/android-chrome-512x512.png">
 
-  <link rel="prefetch" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
-        crossorigin="anonymous" as="style" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-                  integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"></noscript>
+  <meta property="og:title" content="Angular CLI Seed" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://github.com/trungnghia112/angular-cli-seed" />
+  <meta property="og:image" content="/assets/favicons/android-chrome-512x512.png" />
+  <meta property="og:description" content="PWA ready starter project for Angular Service Worker" />
+  <meta property="og:site_name" content="Angular CLI Seed" />
+
+  <link rel="preload" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </noscript>
   <script>
     /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
     !function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
@@ -45,18 +57,10 @@
 <app-root></app-root>
 <div class="app-loading">Loading...</div>
 
-
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then((registration) => {
-        console.log('SW registered');
-      })
-      .catch((err) => {
-        console.log('SW error', err);
-      });
-  }
-</script>
-
+<noscript>
+  <p>
+    Sorry, JavaScript must be enabled to use this app
+  </p>
+</noscript>
 </body>
 </html>

@@ -1,21 +1,26 @@
+
 {
-	"name": "Angular CLI Seed",
-	"short_name": "angular",
-	"icons": [
-    {
-      "src": "/assets/favicons/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/assets/favicons/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-	],
-	"theme_color": "#b92b27",
+    "short_name": "angular",
+    "name": "Angular CLI Seed",
+    "start_url": "/",
+
+    "theme_color": "#f48c5b",
     "background_color": "#ffffff",
-	"display": "standalone",
-	"orientation": "portrait",
-	"start_url": "./?utm_source=web_app_manifest"
+
+    "display": "standalone",
+    "orientation": "portrait",
+
+    "icons": [
+      {
+        "src": "/assets/favicons/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/assets/favicons/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+
 }
