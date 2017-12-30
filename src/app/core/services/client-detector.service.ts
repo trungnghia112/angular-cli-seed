@@ -36,8 +36,8 @@ export enum ClientNames {
   Electron
 }
 
-export class ClientDetector {
-  static osStrings: Array<Test> = [
+export class ClientDetectorService {
+  osStrings: Array<Test> = [
     {s: OsNames.Windows, v: 10, r: /(Windows 10.0|Windows NT 10.0)/},
     {s: OsNames.Windows, v: 8.1, r: /(Windows 8.1|Windows NT 6.3)/},
     {s: OsNames.Windows, v: 8, r: /(Windows 8|Windows NT 6.2)/},
@@ -68,7 +68,7 @@ export class ClientDetector {
     {s: OsNames.Electron, v: 0, r: /Electron/}
   ];
 
-  static clientStrings: Array<Test> = [
+  clientStrings: Array<Test> = [
     {s: ClientNames.Electron, r: /Electron/},
     {s: ClientNames.Chrome, r: /Chrome/},
     {s: ClientNames.Safari, r: /Safari/},
@@ -78,11 +78,13 @@ export class ClientDetector {
     {s: ClientNames.Opera, r: /OPR/}
   ];
 
-  static test<T extends Result>(array: Array<Test>): T {
+  test<T extends Result>(array: Array<Test>): T {
     const result: T = <T>{};
 
     array.forEach((osItem: any) => {
+      // console.log(osItem);
       if (osItem.r.test(navigator.userAgent) && !result.name) {
+        // console.log(result);
         result.name = osItem.s;
         result.version = osItem.v;
       }
@@ -90,21 +92,21 @@ export class ClientDetector {
     return result;
   }
 
-  static getOs(): Result {
-    return ClientDetector.test(ClientDetector.osStrings);
+  getOs(): Result {
+    return this.test(this.osStrings);
   }
 
-  static getClient(): Result {
-    return ClientDetector.test(ClientDetector.clientStrings);
+  getClient(): Result {
+    return this.test(this.clientStrings);
   }
 
-  static isMobileDevice(): boolean {
-    return ClientDetector.getOs().name === OsNames.Android ||
-      ClientDetector.getOs().name === OsNames.iOS ||
-      ClientDetector.getOs().name === OsNames.WindowsMobile;
+  isMobileDevice(): boolean {
+    return this.getOs().name === OsNames.Android ||
+      this.getOs().name === OsNames.iOS ||
+      this.getOs().name === OsNames.WindowsMobile;
   }
 
-  static isPhone(): boolean {
-    return ClientDetector.isMobileDevice() && window.screen.width < 770;
+  isPhone(): boolean {
+    return this.isMobileDevice() && window.screen.width < 770;
   }
 }

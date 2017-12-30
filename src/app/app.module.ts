@@ -1,26 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-import { SharedModule } from '@app/shared/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { ServiceWorkerModule } from '@angular/service-worker';
+
+import { environment } from '@env/environment';
+import { CoreModule } from '@app/core/core.module';
+import { SharedModule } from '@app/shared/shared.module';
+
 import { AppComponent } from './app.component';
-import { HomeModule } from './home/home.module';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-
-    NgbModule.forRoot(),
-    SharedModule.forRoot(),
-    HomeModule
-  ],
   declarations: [
     AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+
+    // core & shared
+    CoreModule,
+    SharedModule,
+
+    // app
+    AppRoutingModule,
+
+    // features
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

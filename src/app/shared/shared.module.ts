@@ -1,16 +1,9 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CheckboxModule } from 'primeng/primeng';
-
-import { LocalStorageService } from './services/local-storage.service';
-
-/**
- * Do not specify providers for modules that might be imported by a lazy loaded module.
- */
+import { PipesModule } from '@app/shared/pipies/pipes.module';
+import { DirectivesModule } from '@app/shared/directives/directives.module';
 
 @NgModule({
   imports: [
@@ -24,17 +17,12 @@ import { LocalStorageService } from './services/local-storage.service';
     FormsModule,
     RouterModule,
 
-    NgbModule,
-    CheckboxModule
+    // Pipe
+    PipesModule,
+
+    // Directives
+    DirectivesModule
   ]
 })
 export class SharedModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SharedModule,
-      providers: [
-        LocalStorageService
-      ]
-    };
-  }
 }

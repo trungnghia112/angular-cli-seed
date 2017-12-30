@@ -42,5 +42,3 @@ testem.log
 Thumbs.db
 
 *_BAK*
-/yarn.lock
-/package-lock.json
