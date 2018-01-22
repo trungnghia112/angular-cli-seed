@@ -17,7 +17,6 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
 
     // core & shared
     CoreModule,
@@ -27,6 +26,11 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
 
     // features
+
+
+    // serviceWorker
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+
   ],
   providers: [],
   bootstrap: [AppComponent]
