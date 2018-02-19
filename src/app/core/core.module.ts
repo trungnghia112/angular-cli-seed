@@ -4,11 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { environment } from '@env/environment';
 import { RouterEffects } from '@app/core/states/effects/router';
 import { metaReducers, reducers } from '@app/core/states/reducers';
+import { CustomSerializer } from '@app/core/states/utils/utils';
 
 import { LocalStorageService } from '@app/core/services/local-storage.service';
 import { ClientDetectorService } from '@app/core/services/client-detector.service';
@@ -26,7 +27,9 @@ export function getInitialState() {
     /**
      * @ngrx/router-store keeps router state up-to-date in the store.
      */
-    StoreRouterConnectingModule,
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'routerReducer' // name of reducer key
+    }),
 
     /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer
@@ -58,10 +61,15 @@ export function getInitialState() {
      *
      * See: https://github.com/zalmoxisus/redux-devtools-extension
      */
-    !environment.production ? StoreDevtoolsModule.instrument({maxAge: 25}) : []
+    // Instrumentation must be imported after importing StoreModule (config is optional)
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production // Restrict extension to log-only mode
+    })
   ],
   declarations: [],
   providers: [
+    { provide: RouterStateSerializer, useClass: CustomSerializer },
     LocalStorageService,
     ClientDetectorService
   ]
