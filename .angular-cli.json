@@ -27,7 +27,14 @@
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       },
-      "serviceWorker": true
+      "serviceWorker": true,
+      "budgets": [
+        { "type": "bundle", "name": "main", "baseline": "300kb", "warning": "30kb" },
+        { "type": "bundle", "name": "races", "maximumWarning": "360kb" },
+        { "type": "allScript", "baseline": "1.4mb", "maximumError": "100kb" },
+        { "type": "initial", "baseline": "1.6mb", "error": "100kb" },
+        { "type": "any", "maximumError": "500kb" }
+      ]
     }
   ],
   "e2e": {
