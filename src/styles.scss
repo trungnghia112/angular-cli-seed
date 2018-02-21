@@ -1,1 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
+/*!--------------------------------------------------------------------------------
+
+    Theme Name: Angular Cli Seed
+    Version:    1.2.2
+    Author:     trungnghia112 <trungnghia112@gmail.com>
+
+-----------------------------------------------------------------------------------*/
+//  Core
+//  Bootstrap
+//  Fontawesome
+//  Third parties
+//  Fonts
+//  Partials
+//  Modules
+//  Layout
+//  Content
+//---------------------------------------------------------------------------------*/
+//
+// =Core
+// --------------------------------------------------
+@import "scss/core";
+//
+// =Bootstrap
+// --------------------------------------------------
+@import "scss/custom-bootstrap";
+//
+// =Fontawesome
+// --------------------------------------------------
+@import "scss/third-parties/fontawesome/web-fonts-with-css/scss/fa-regular";
+@import "scss/third-parties/fontawesome/web-fonts-with-css/scss/fa-brands";
+@import "scss/third-parties/fontawesome/web-fonts-with-css/scss/fa-solid";
+@import "scss/third-parties/fontawesome/web-fonts-with-css/scss/fontawesome";
+//
+// =Third parties
+// --------------------------------------------------
+@import "scss/third-parties/primeng";
+@import "scss/third-parties/ng-bootstrap";
+
+// =Fonts
+// --------------------------------------------------
+//
+//
+// =Global
+// --------------------------------------------------
+@import "scss/partials/dropdown";
+@import "scss/partials/buttons";
+@import "scss/partials/medias";
+@import "scss/partials/grid";
+//
+// =Modules
+// --------------------------------------------------
+@import "scss/modules/avatar";
+//
+//
+// =Layout
+// --------------------------------------------------
+@import "scss/layout/content";
+//
+//
+//
+// =Content
+// --------------------------------------------------
+
+

@@ -6,6 +6,7 @@ export class UserModel {
   sex: number;
   birthday: string;
   address: string;
+  token: string;
 
   constructor(fields?: {
     id?: string,
@@ -14,7 +15,8 @@ export class UserModel {
     phone?: string,
     sex?: number,
     birthday?: string,
-    address?: string
+    address?: string,
+    token?: string,
   }) {
     if (fields) {
       Object.assign(this, fields);

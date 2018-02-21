@@ -3,28 +3,30 @@ import { AbstractControl, FormGroup } from '@angular/forms';
 export class CustomValidator {
 
   public static emailFormat(c: AbstractControl) {
-    // tslint:disable-next-line
-    let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
-    return EMAIL_REGEXP.test(c.value) ? null : {'emailFormat': true};
-  }
-
-  public static emailNullFormat(c: AbstractControl) {
-    if (c.value && c.value.length == 0) {
+    if (!c.value) {
       return null;
-      // return {'emailFormat': true};
     }
+
     // tslint:disable-next-line
     let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     return EMAIL_REGEXP.test(c.value) ? null : {'emailFormat': true};
   }
 
   public static urlFormat(c: AbstractControl) {
+    if (!c.value) {
+      return null;
+    }
+
     // tslint:disable-next-line
     let REGEXP = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
     return REGEXP.test(c.value) ? null : {'url': true};
   }
 
   public static phoneFormat(c: AbstractControl) {
+    if (!c.value) {
+      return null;
+    }
+
     // tslint:disable-next-line
     let REGEXP = /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/i;
     return REGEXP.test(c.value) ? null : {'phoneFormat': true};
@@ -32,7 +34,7 @@ export class CustomValidator {
 
   // refs Minimum 8 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number:
   public static passwordCheck(c: AbstractControl) {
-    let PASS_REGEXP = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/i;
+    const PASS_REGEXP = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/i;
     return PASS_REGEXP.test(c.value) ? null : {'passwordCheck': true};
   }
 
@@ -62,22 +64,22 @@ export class CustomValidator {
    )                   # End of group
    */
   public static lowercaseUppercase(c: AbstractControl) {
-    let REGEXP = /(?=.*[a-z])(?=.*[A-Z])/;
+    const REGEXP = /(?=.*[a-z])(?=.*[A-Z])/;
     return REGEXP.test(c.value) ? null : {'lowercaseUppercase': true};
   }
 
   public static specialSymbol(c: AbstractControl) {
-    let REGEXP = /(?=.*\W)/;
+    const REGEXP = /(?=.*\W)/;
     return REGEXP.test(c.value) ? null : {'specialSymbol': true};
   }
 
   public static number(c: AbstractControl) {
-    let REGEXP = /(?=.*\d)/;
+    const REGEXP = /(?=.*\d)/;
     return REGEXP.test(c.value) ? null : {'number': true};
   }
 
   public static specialSymbolOrNumber(c: AbstractControl) {
-    let REGEXP = /(?=.*\d)|(?=.*\W)/;
+    const REGEXP = /(?=.*\d)|(?=.*\W)/;
     return REGEXP.test(c.value) ? null : {'specialSymbolOrNumber': true};
   }
 

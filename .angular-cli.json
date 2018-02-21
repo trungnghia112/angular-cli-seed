@@ -19,6 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/primeng/resources/themes/omega/theme.css",
+        "../node_modules/primeng/resources/primeng.min.css",
         "styles.scss"
       ],
       "scripts": [],
@@ -33,7 +35,7 @@
         { "type": "bundle", "name": "races", "maximumWarning": "360kb" },
         { "type": "allScript", "baseline": "1.4mb", "maximumError": "100kb" },
         { "type": "initial", "baseline": "1.6mb", "error": "100kb" },
-        { "type": "any", "maximumError": "500kb" }
+        { "type": "any", "maximumError": "1mb" }
       ]
     }
   ],

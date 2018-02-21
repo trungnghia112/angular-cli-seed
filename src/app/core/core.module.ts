@@ -1,18 +1,23 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from '@env/environment';
 import { RouterEffects } from '@app/core/states/effects/router';
 import { metaReducers, reducers } from '@app/core/states/reducers';
 import { CustomSerializer } from '@app/core/states/utils/utils';
 
+import { HttpTokenInterceptor } from '@app/core/interceptors/http.token.interceptor';
 import { LocalStorageService } from '@app/core/services/local-storage.service';
 import { ClientDetectorService } from '@app/core/services/client-detector.service';
+import { ApiService } from '@app/core/services/api.service';
+import { UserService } from '@app/core/services/user.service';
 
 export function getInitialState() {
   return LocalStorageService.loadInitialState();
@@ -23,6 +28,7 @@ export function getInitialState() {
     // angular
     CommonModule,
     HttpClientModule,
+    NgbModule.forRoot(),
 
     /**
      * @ngrx/router-store keeps router state up-to-date in the store.
@@ -70,8 +76,15 @@ export function getInitialState() {
   declarations: [],
   providers: [
     { provide: RouterStateSerializer, useClass: CustomSerializer },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpTokenInterceptor,
+      multi: true, // option. This is required and tells Angular that HTTP_INTERCEPTORS is an array of values, rather than a single value.
+    },
     LocalStorageService,
-    ClientDetectorService
+    ClientDetectorService,
+    ApiService,
+    UserService
   ]
 })
 export class CoreModule {

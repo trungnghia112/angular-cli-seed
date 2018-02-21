@@ -1,0 +1,37 @@
+.btn-facebook {
+  @include button-variant($bg-facebook, $bg-facebook);
+}
+
+.btn-outline-facebook {
+  @include button-outline-variant($bg-facebook, $white);
+}
+
+.btn-icon {
+  min-width: 38px;
+  &.btn-sm {
+    min-width: 31px;
+  }
+  &.btn-lg {
+    min-width: 48px;
+  }
+
+  &.dropdown-toggle {
+    &:after {
+      content: none;
+      display: none;
+    }
+  }
+}
+
+.btn-fixed-bottom {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  width: 56px;
+  height: 56px;
+  text-align: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}

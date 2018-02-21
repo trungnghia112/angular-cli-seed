@@ -1,0 +1,26 @@
+@mixin avatar-style-size($size : 16px) {
+  display: inline-block;
+  width: $size;
+  text-align: center;
+  line-height: $size;
+  background-color: #999999;
+  text-transform: uppercase;
+  color: #f3f3f3;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-background-size: cover !important;
+  background-size: cover !important;
+}
+
+@each $avatar-size in map-keys($avatar-sizes) {
+  .avatar-#{$avatar-size} {
+    @include avatar-style-size(map-get($avatar-sizes, $avatar-size));
+  }
+}
+
+@each $avatar-color in map-keys($avatar-colors) {
+  .avatar-#{$avatar-color} {
+    background-color: (map-get($avatar-colors, $avatar-color));
+  }
+}
