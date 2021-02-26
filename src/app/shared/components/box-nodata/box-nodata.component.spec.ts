@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SharedBoxNoDataComponent } from './box-nodata.component';
 
@@ -6,7 +6,7 @@ describe('SharedBoxNoDataComponent', () => {
   let component: SharedBoxNoDataComponent;
   let fixture: ComponentFixture<SharedBoxNoDataComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SharedBoxNoDataComponent]
     })
